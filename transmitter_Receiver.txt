@@ -1,0 +1,38 @@
+function [ok, Drive_Run_IOT, button, chb_off, chb_on, drive_run2, drive_stop, led_on_off, ...
+          temp_c, led_pwd, pot_val, hum_c] = parsePacket(pkt)
+%#codegen
+% pkt: uint8[1x17] from SCI Receive
+
+ok = 0;
+
+Drive_Run_IOT = false; button = false; chb_off=false; chb_on=false;
+drive_run2=false; drive_stop=false; led_on_off=false;
+temp_c = single(0); led_pwd = int16(0); pot_val = int16(0); hum_c = single(0);
+
+if numel(pkt) ~= 17
+    return;
+end
+if pkt(1) ~= uint8('S') || pkt(17) ~= uint8('E')
+    return;
+end
+
+ok          = 1;
+Drive_Run_IOT   = (pkt(2) ~= 0);
+button      = (pkt(3) ~= 0);
+chb_off     = (pkt(4) ~= 0);
+chb_on      = (pkt(5) ~= 0);
+drive_run2  = (pkt(6) ~= 0);
+drive_stop  = (pkt(7) ~= 0);
+led_on_off  = (pkt(8) ~= 0);   % note: this is how you packed it
+
+% little-endian 16-bit → int16
+temp_i  = int16( bitor(uint16(pkt(9)), bitshift(uint16(pkt(10)),8)) );
+led_i   = int16( bitor(uint16(pkt(11)), bitshift(uint16(pkt(12)),8)) );
+pot_i   = int16( bitor(uint16(pkt(13)), bitshift(uint16(pkt(14)),8)) );
+hum_i   = int16( bitor(uint16(pkt(15)), bitshift(uint16(pkt(16)),8)) );
+
+% scaling
+temp_c = single(temp_i) / 100.0;     % e.g. 27.70
+led_pwd = led_i;                     % raw PWM setpoint
+pot_val = pot_i;                     % raw pot
+hum_c  = single(hum_i) / 100.0;      % e.g. 56.23

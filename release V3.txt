@@ -1,0 +1,10 @@
+1) DPU list - DPUList.ini
+C:\Custom\Database\DPUList
+
+2) HMI 
+C:\Custom\Displays\operating\BOP\LCI_CH_B.MN
+C:\Custom\Displays\operating\BOP\LCI_CHA.MN
+C:\Custom\Displays\operating\MAIN\MAIN.MN
+
+3) maxDPUTool
+C:\Users\Engineer\Desktop\LCI_Ch2

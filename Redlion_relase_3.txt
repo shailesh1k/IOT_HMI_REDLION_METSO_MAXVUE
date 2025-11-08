@@ -1,0 +1,37 @@
+IOT interface with ARM Cortex, TMS320F28379d, TMS320F28069D, redlion, SCADA
+
+
+
+
+	IOT			From 	To					From 	To	
+			Transmiting  from Matlab 	Mathlab	to Crimsion				received data  to Matlab f	Crimsion	DSP TI Board	
+						redlion HMI Screen	Byte information					
+				MATLAB_TAG	TAG	HMI_TAG				str1=AsText(Tag9);	Tag_9_0	1
+		1		rpm_out	cha.r1	cha.Set_RPM	4	4		str2=AsText(Tag9_1);	Tag9_1	1
+		2		Line_Vr	cha.r2	cha.Line_Vr	3	7		str3=AsText(Tag9_2);	Tag9_2	1
+		3		Line_Vy	cha.r3	cha.Line_Vy	3	10		str4=AsText(Fan_Status);	FAN_RUN_STATUSS	1
+		4		Line_Vb\Line_Ir	cha.r11	cha.Line_Vb\cha.Line_Ir	3	13		str5=AsText(DC_Link_Current);	DC_LINK_CRRENT	1
+		5		Line_Iy	cha.r12	cha.Line_Iy	3	16		str6=AsText(PID_P_CURRENT);	PID_P_CURRENT	1
+		6		Line_Ib	cha.r13	cha.Line_Ib	3	19		str7=AsText(PID_I_CURRENT);	PID_I_CURRENT	1
+		7		Load_Vr	cha.r14	cha.Load_Vr	3	22		str8=AsText(PID_D_CURRENT);	PID_D_CURRENT	1
+		8		Load_Vy	cha.r15	cha.Load_Vy	3	25		str9=AsText(PID_P_SPEED);	PID_P_SPEED	1
+		9		Load_Vb	cha.r16	cha.Load_Vb	3	28		str10=AsText(PID_I_SPEED);	PID_I_SPEED	1
+		10		Load_Ir 	cha.r17	cha.Load_Ir 	3	31		str11=AsText(PID_D_SPEED);	PID_D_SPEED	1
+		11		Load_Iy	cha.r18	cha.Load_Iy	3	34				11
+		12	freq	cha.freq	cha.r19	cha.freq	3	37				
+		13	DSP_READY	DSP_READY	cha.r20	cha.DSP_READY	1	38				
+		14	freq2	freq_meas_2	cha.r21	cha.freq2	3	41				
+		15	Sync	Sync gpio	cha.r22	cha.Sync_Led	1	42				
+		16		Load_Ir_Current	cha.r23	cha.Load_Ia	4	46				
+		17		Load_Iy_current	cha.r24	cha.Load_Ibb	4	50				
+	POT	18	POT	freq_fl	cha.r25	cha.freq_f	4	54				
+		19		Local	cha.r26	cha.Local	1	55				
+		20		remote	cha.r27	cha.Remote	1	56				
+		21		Local_Start	cha.r28	cha.Local_Start	1	57				
+		22		Local_Stop	cha.r29	cha.Local_Stop	1	58				
+		23		Local_remote_Emegency	cha.r30	cha.Emergency	1	59				
+	Temperature	24		Temperature	cha.r31	cha.temp	4	63	C:\Users\ShaileshKumarEdn\Desktop\can\28379d\iot\IOT_RX_TX_28379d_24b_eSP_v3_0			
+	humidity	25		Humidity	cha.r32	cha.hum	4	67				
+07-11-2025	servo value	26		servo	cha.r33	cha.servo	4	71				
+												
+ 
